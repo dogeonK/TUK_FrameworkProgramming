@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tukorea.myweb.mapper.UserMapper">
+ 	
+     <insert id="insert"> 
+   		insert into user_free (userid, passwd, username, anum, mobile, email, usertype) values
+ 		(#{userid}, #{passwd}, #{username}, #{anum}, #{mobile}, #{email}, 1)
+     </insert> 
+ 	
+     <select id="selectByid" resultType="org.tukorea.myweb.domain.UserVO">
+ 		select * from user_free where userid = #{userid}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.tukorea.myweb.domain.UserVO">
+     <![CDATA[
+ 		select * from user_free
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update user_free set passwd =#{passwd}, username =#{username}, 
+			anum =#{anum}, mobile =#{mobile}, email =#{email}, usertype =#{usertype}
+		 where userid = #{userid}
+    </update>
+ 
+    <delete id="delete">
+		delete from user_free where userid = #{userid}
+    </delete>
+	
+</mapper>  
+

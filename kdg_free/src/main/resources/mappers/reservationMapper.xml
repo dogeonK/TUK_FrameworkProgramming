@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tukorea.myweb.mapper.ReservationMapper">
+  
+ 	
+     <insert id="insert"> 
+   		insert into reservation_free (userid, movieid, moviename, seatnumber) values
+ 		(#{userid}, #{movieid}, #{moviename}, #{seatnumber})
+     </insert> 
+ 	
+     <select id="selectByid" resultType="org.tukorea.myweb.domain.ReservationVO">
+ 		select * from reservation_free where reserveid = #{resereveid}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.tukorea.myweb.domain.ReservationVO">
+     <![CDATA[
+ 		select * from reservation_free
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update reservation_free set userid =#{userid}, movieid =#{movieid}, moviename =#{moviename}, 
+			seatnumber =#{seatnumber}
+		 where reserveid = #{reserveid}
+    </update>
+ 
+    <delete id="delete">
+		delete from reservation_free where reserveid = #{reserveid}
+    </delete>
+	
+	<select id="reserveSeat" resultType="java.lang.String">
+     <![CDATA[
+ 		select seatnumber from reservation_free where movieid =#{movieid}
+      ]]> 
+     </select>
+</mapper>  
+

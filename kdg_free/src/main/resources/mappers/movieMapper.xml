@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tukorea.myweb.mapper.MovieMapper">
+  
+ 	
+     <insert id="insert"> 
+   		insert into movie_free (movieid, moviename, moviegenre, room, movietime) values
+ 		(#{movieid}, #{moviename}, #{moviegenre}, #{room}, #{movietime})
+     </insert> 
+ 	
+     <select id="selectByid" resultType="org.tukorea.myweb.domain.MovieVO">
+ 		select * from movie_free where movieid = #{movieid}
+     </select>
+ 	
+     <select id="selectAll" resultType="org.tukorea.myweb.domain.MovieVO">
+     <![CDATA[
+ 		select * from movie_free
+      ]]> 
+     </select>
+ 	
+     <update id="update">
+	 	update movie_free set moviename =#{moviename}, moviegenre =#{moviegenre}, room =#{room}, 
+			movietime =#{movietime}
+		 where movieid = #{movieid}
+    </update>
+ 
+    <delete id="delete">
+		delete from movie_free where movieid = #{movieid}
+    </delete>
+	
+</mapper>  
+
